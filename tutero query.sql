@@ -1,23 +1,5 @@
 select distinct(subject) from TuteroStudentFeedbackData
 
---melihat rating per tutor
-select tutor_id, count(student_id) as jumlah_murid, AVG(tutor_rating) as rating
-from TuteroSession
-group by tutor_id
-order by rating DESC
-
-
---melihat rating per grade_level
-select grade_level, count(tutor_id) as jumlah_tutor, count(student_id) as jumlah_murid, round(AVG(tutor_rating), 2) as rating
-from TuteroSession
-group by grade_level
-order by rating desc
-
-
-select *
-from TuteroSession
-where location like 'eri%'
-
 select session_type, count(student_id) as jumlah_null
 from TuteroStudentFeedbackData
 where comments is null and rating is null
